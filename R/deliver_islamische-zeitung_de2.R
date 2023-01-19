@@ -3,7 +3,7 @@
 #'   indicating the domain of all links.
 #' @inheritParams pb_deliver
 #' @keywords internal
-pb_deliver_paper.islamische_zeitung_de <- function(x, verbose = NULL, ...) {
+deliver_islamische_zeitung_de <- function(x, verbose = NULL, ...) {
   
   # If verbose is not explicitly defined, use package default stored in options.
   if (is.null(verbose)) verbose <- getOption("paperboy_verbose")
@@ -16,7 +16,7 @@ pb_deliver_paper.islamische_zeitung_de <- function(x, verbose = NULL, ...) {
   pb <- make_pb(x)
   
   # iterate over all URLs and normalise data.frame
-  purrr::map_df(x$content_raw, parse_islamische-zeitung_de, verbose, pb) %>%
+  purrr::map_df(x$content_raw, parse_islamische_zeitung_de, verbose, pb) %>%
     cbind(x) %>%
     normalise_df() %>%
     return()
