@@ -1,5 +1,5 @@
 
-pb_deliver_paper.www_islamische\-zeitung_de <- function(x, verbose = NULL, ...) {
+deliver_islamische <- function(x, verbose = NULL, ...) {
 
   . <- NULL
 
