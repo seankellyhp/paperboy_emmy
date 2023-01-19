@@ -3,7 +3,7 @@
 #'   indicating the domain of all links.
 #' @inheritParams pb_deliver
 #' @keywords internal
-pb_deliver_paper.islamische-zeitung_de <- function(x, verbose = NULL, ...) {
+pb_deliver_paper.islamische_zeitung_de <- function(x, verbose = NULL, ...) {
   
   # If verbose is not explicitly defined, use package default stored in options.
   if (is.null(verbose)) verbose <- getOption("paperboy_verbose")
@@ -24,7 +24,7 @@ pb_deliver_paper.islamische-zeitung_de <- function(x, verbose = NULL, ...) {
 }
 
 # define parsing function to iterate over the URLs
-parse_islamische-zeitung_de <- function(html, verbose, pb) {
+parse_islamische_zeitung_de <- function(html, verbose, pb) {
   
   # raw html is stored in column content_raw
   html <- rvest::read_html(html)
