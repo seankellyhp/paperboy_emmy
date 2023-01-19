@@ -12,18 +12,7 @@ coverage](https://codecov.io/gh/JBGruber/paperboy/branch/main/graph/badge.svg)](
 
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/JohannesBGruber.svg?style=social&label=Follow%20%40JohannesBGruber)](https://twitter.com/JohannesBGruber)
 
-The philosophy of `paperboy` is that the package is a comprehensive
-collection of webscraping scripts for news media sites. Many data
-scientists and researchers write their own code when they have to
-retrieve news media content from websites. At the end of research
-projects, this code is often collecting digital dust on researchers hard
-drives instead of being made public for others to employ. `paperboy`
-offers writers of webscraping scripts a clear path to publish their code
-and earn co-authorship on the package (see [For
-developers](#for-developers) Section). For users, the promise is simple:
-`paperboy` delivers news media data from many websites in a consistent
-format. Check which domains are already supported in [the table
-below](#available-scrapers) or with the command `pb_available()`.
+COPY OF PAPERBOY FOR TEST PURPOSES
 
 ## Installation
 
@@ -31,63 +20,8 @@ below](#available-scrapers) or with the command `pb_available()`.
 `remotes` (first install `remotes` via `install.packages("remotes")`:
 
 ``` r
-remotes::install_github("JBGruber/paperboy")
+remotes::install_github("https://github.com/seankellyhp/paperboy_emmy")
 ```
-
-## For Users
-
-Say you have a link to a news media article, for example, from
-[mediacloud.org](https://mediacloud.org/). Simply supply one or multiple
-links to a media article to the main function, `pb_deliver`:
-
-``` r
-library(paperboy)
-df <- pb_deliver("https://tinyurl.com/386e98k5")
-df
-```
-
-| url                            | expanded_url                                                                      | domain              | status | datetime            | author                                                | headline                | text                     | misc |
-|:-------------------------------|:----------------------------------------------------------------------------------|:--------------------|-------:|:--------------------|:------------------------------------------------------|:------------------------|:-------------------------|:-----|
-| <https://tinyurl.com/386e98k5> | <https://www.theguardian.com/tv-and-radio/2021/jul/12/should-marge-divorce-homer> | www.theguardian.com |    200 | 2021-07-12 12:00:13 | <https://www.theguardian.com/profile/stuart-heritage> | ’A woman trapped in an… | The Simpson couple have… | NULL |
-
-The returned `data.frame` contains important meta information about the
-news items and their full text. Notice, that the function had no problem
-reading the link, even though it was shortened. ***`paperboy` is an
-unfinished and highly experimental package at the moment.*** You will
-therefore often encounter this warning:
-
-``` r
-pb_deliver("google.com")
-#> Warning in pb_deliver_paper.default(u, verbose
-#> = verbose, ...): ...No method for domain
-#> www.google.com yet, attempting generic approach
-```
-
-| url        | expanded_url             | domain         | status | datetime | author | headline | text                                               | misc |
-|:-----------|:-------------------------|:---------------|-------:|:---------|:-------|:---------|:---------------------------------------------------|:-----|
-| google.com | <http://www.google.com/> | www.google.com |    200 | NA       | NA     | Google   | © 2022 - Datenschutzerklrung - Nutzungsbedingungen | NULL |
-
-The function still returns a data.frame, but important information is
-missing — in this case because it isn’t there. The other URLs will be
-processed normally though. If you have a dead link in your `url` vector,
-the `status` column will be different from `200` and contain `NA`s.
-
-If you are unhappy with results from the generic approach, you can still
-use the second function from the package to download raw html code and
-later parse it yourself:
-
-``` r
-pb_collect("google.com")
-```
-
-| url        | expanded_url             | domain         | status | content_raw                        |
-|:-----------|:-------------------------|:---------------|-------:|:-----------------------------------|
-| google.com | <http://www.google.com/> | www.google.com |    200 | \<!doctype html\>\<html itemscope… |
-
-`pb_collect` uses concurrent requests to download many pages at the same
-time, making the function very quick to collect large amounts of data.
-You can then experiment with `rvest` or another package to extract the
-information you want from `df$content_raw`.
 
 ## For developers
 
