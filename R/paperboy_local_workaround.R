@@ -1,8 +1,16 @@
 
+#' internal function to deliver specific newspapers
+#' @param x A data.frame returned by  \link{pb_collect} with an additional class
+#'   indicating the domain of all links.
+#' @inheritParams pb_deliver
+#' @keywords internal
+#' 
+#' 
 #remotes::install_github("https://github.com/seankellyhp/paperboy_emmy", force = TRUE)
 # Hacky method to deliver Islamische Zeitung function
 
 # Functions
+
 
 s_n_list <- function(...) {
 # Join all content safely into list 
