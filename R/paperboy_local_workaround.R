@@ -1,11 +1,4 @@
 
-#' internal function to deliver specific newspapers
-#' @param x A data.frame returned by  \link{pb_collect} with an additional class
-#'   indicating the domain of all links.
-#' @inheritParams pb_deliver
-#' @keywords internal
-#' 
-#' 
 #remotes::install_github("https://github.com/seankellyhp/paperboy_emmy", force = TRUE)
 # Hacky method to deliver Islamische Zeitung function
 
@@ -143,6 +136,9 @@ safeScrape <- function(url) {
   )
 }
 
+#' @param listURL a data.frame returned by collect.
+#'
+#' @export
 pb_islamische_all <- function(listURL) {
 # Join all scraped content into a data frame 
    
